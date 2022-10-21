@@ -3,7 +3,9 @@ using Accord.Statistics.Distributions.Univariate;
 using Accord.Statistics.Testing;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Threading;
 
 namespace windows_cep_calculator
 {
@@ -11,6 +13,8 @@ namespace windows_cep_calculator
     {
         static void Main(string[] args)
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-GB");
+
             if (args.Length == 0)
             {
                 Console.WriteLine("Drag a csv file with the results to the exe and try again.");
