@@ -165,7 +165,7 @@ namespace windows_cep_calculator
 
                 for (int i = 0; i < values.Count; i++)
                 {
-                    T[i] = 1 - (0.03 * Math.Pow(kurtosis4 - 3, 3) * (Math.Pow(column4[i] - mean4, 2) / var4));
+                    T[i] = 1 - (0.03 * Math.Pow(kurtosis4 - 3, 3) * (Math.Pow(column4[i] - median4, 2) / var4));
                     Di[i] = Math.Max(T[i], 0.01);
 
                     Dj = Dj + 1 / Di[i];
@@ -217,7 +217,6 @@ namespace windows_cep_calculator
                     CEP = Math.Sqrt(sigma2 * m * (1 - v / (9 * m * m)) * (1 - v / (9 * m * m)) * (1 - v / (9 * m * m)));
 
                     resultContent += ("\nCEP Equivalent: " + Math.Round(CEP, 2) + "m (Grubbs)\n");
-                    Console.WriteLine("                (Grubbs)");
 
                     // CEP 
                     double cep2 = 0.562 * Math.Max(Math.Sqrt(var1), Math.Sqrt(var2)) + 0.617 * Math.Min(Math.Sqrt(var1), Math.Sqrt(var2));
